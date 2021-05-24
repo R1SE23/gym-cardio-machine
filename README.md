@@ -29,4 +29,5 @@ url = "https://gymcardio.herokuapp.com/upload"
 response = requests.post(url, files=img_file)
 print(response.text)
 ```
-
+## model training 
+https://colab.research.google.com/drive/1Jw-2XhaAmHC2emX6qmxmWEU5VtyKbl9g?usp=sharing
