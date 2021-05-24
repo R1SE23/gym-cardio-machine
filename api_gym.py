@@ -1,6 +1,6 @@
 from flask import Flask, flash, request ,jsonify, render_template
 from werkzeug.utils import secure_filename
-from predict-model import * # import predict
+from predict_model import * # import predict
 import os
 
 UPLOAD_FOLDER = './uploads'
