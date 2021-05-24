@@ -6,6 +6,9 @@ import os
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
+# prob threshold required for making a prediction
+prob_threshold = 0.3
+
 # create flask object
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -37,14 +40,14 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             # Save File
-            file_path = (os.path.join(app.config['UPLOAD_FOLDER'],    
-                             filename))
-            file.save(file_path)
-
-
-            # preprocess and predict image
-            label = predictImage(file_path)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'],    
+                             'image.png'))
+            # preprocess image and predict
+            label, y_prob = predictImage('./uploads/image.png')
+            if len(y_prob[y_prob > prob_threshold]) >= 2 or len(y_prob[y_prob > prob_threshold]) <= 0:
+                label = 'ไม่สามารถระบุชนิดได้ โปรดอัพโหลดภาพมุมอื่น'
             return jsonify({'label': label})
+
     return '''
     <!doctype html>
     <title>Upload new File</title>
@@ -60,7 +63,11 @@ def upload_file():
 def predict_img_from_url():
     this_url = request.args.get('p_image_url', default='please provide url', type=str)
     try:
-        label = predictImageFromURL(this_url)
+        label, y_prob = predictImageFromURL(this_url)
+        print(y_prob)
+        print(label)
+        if len(y_prob[y_prob > prob_threshold]) >= 2 or len(y_prob[y_prob > prob_threshold]) <= 0:
+            label = 'ไม่สามารถระบุชนิดได้ โปรดอัพโหลดภาพมุมอื่น'
     except:
         label = 'URL not valid. Please try other URLs.'
     return jsonify({'label': label})

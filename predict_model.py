@@ -31,7 +31,7 @@ def predictImage(pic_name):
        'Treadmill']
 
     #Load model
-    modFile = '/content/drive/My Drive/Dataset/cardio-classifier.h5'
+    modFile = 'cardio-classifier.h5'
     mod = tf.keras.models.load_model(modFile,custom_objects={'KerasLayer':hub.KerasLayer})
     # input image
     img = image.load_img(pic_name, target_size=(224, 224))
@@ -42,7 +42,7 @@ def predictImage(pic_name):
     y_prob = mod.predict(img_tensor)
     y_classes = y_prob.argmax(axis=-1)
     res = dataset_labels[y_classes[0]]
-    return res
+    return res, y_prob
 
 
 def loadImage(URL):
@@ -54,8 +54,8 @@ def loadImage(URL):
   
 def predictImageFromURL(img_url):
     img_path = loadImage(img_url)
-    res = predictImage(img_path)
-    return res
+    res, y_prob = predictImage(img_path)
+    return res, y_prob
 
 ##--------------------------------##
 ##----------- Test ---------------##
