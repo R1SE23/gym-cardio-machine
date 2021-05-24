@@ -1,5 +1,5 @@
 ## Gym Cardio Machine classification
-### Model: Transfer Learning - MobileNetV2, Final Validation Accuarcy: 95.24%
+### Model: Transfer Learning - MobileNetV2, Final Validation Accuracy: 95.24%
 
 ## Usage
 Run api_gym to start Flask
