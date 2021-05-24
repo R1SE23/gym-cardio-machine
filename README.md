@@ -7,18 +7,26 @@ Run api_gym to start Flask
 python api_gym.py
 ```
 
-# #---------------------------------#
-# # To use this api in Python
-# #---------------------------------#
-# import requests
-# # upload your image to colab
-# PATH_TO_INPUT_IMAGE = '/content/1062404-1573963307-167380.jpg'
-# img_file = {"file": open(PATH_TO_INPUT_IMAGE, "rb")}
-# '''
-# The instance "file" is created in the api_gym.py 
-# See the line includig: 
-# file = request.files['file']
-# '''
-# url = "https://gymcardio.herokuapp.com/upload"
-# response = requests.post(url, files=img_file)
-# print(response.text)
+## use heroku API via url submit
+
+```
+# example url
+import requests
+pic_url = 'https://johnson.co.th/wp-content/uploads/2020/02/Horizon-Treadmill-T101-001.jpg'
+url = f'https://gymcardio.herokuapp.com/url?p_image_url={pic_url}'
+response = requests.get(url)
+print(response.text)
+```
+
+## use heroku API via upload
+
+```
+import requests
+# example image file
+PATH_TO_INPUT_IMAGE = '/content/performance-treadmill-t900c.jpg'
+img_file = {"file": open(PATH_TO_INPUT_IMAGE, "rb")}
+url = "https://gymcardio.herokuapp.com/upload"
+response = requests.post(url, files=img_file)
+print(response.text)
+```
+
