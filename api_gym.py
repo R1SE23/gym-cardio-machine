@@ -80,18 +80,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-# #---------------------------------#
-# # To use this api in Python
-# #---------------------------------#
-# import requests
-# # upload your image to colab
-# PATH_TO_INPUT_IMAGE = '/content/1062404-1573963307-167380.jpg'
-# img_file = {"file": open(PATH_TO_INPUT_IMAGE, "rb")}
-# '''
-# The instance "file" is created in the api_gym.py 
-# See the line includig: 
-# file = request.files['file']
-# '''
-# url = "https://gym-images-api.herokuapp.com/upload"
-# response = requests.post(url, files=img_file)
-# print(response.text)
