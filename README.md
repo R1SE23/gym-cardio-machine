@@ -1,5 +1,5 @@
 ## Gym Cardio Machine classification
-### Model: MobileNetV2
+### Model: Transfer Learning - MobileNetV2, Final Validation Accuarcy: 95.24%
 
 ## Usage
 Run api_gym to start Flask
@@ -10,8 +10,8 @@ python api_gym.py
 ## use heroku API via url submit
 
 ```
-# example url
 import requests
+# example url
 pic_url = 'https://johnson.co.th/wp-content/uploads/2020/02/Horizon-Treadmill-T101-001.jpg'
 url = f'https://gymcardio.herokuapp.com/url?p_image_url={pic_url}'
 response = requests.get(url)
