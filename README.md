@@ -31,3 +31,7 @@ print(response.text)
 ```
 ## model training 
 https://colab.research.google.com/drive/1Jw-2XhaAmHC2emX6qmxmWEU5VtyKbl9g?usp=sharing
+
+## More Image Classification Projects
+https://github.com/R1SE23/garbage-classification-flask
+https://github.com/R1SE23/custom-image-classifier
